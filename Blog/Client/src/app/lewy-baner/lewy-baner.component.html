@@ -1,0 +1,17 @@
+<h2>Kategorie ogłoszeń</h2>
+<ol>
+    <li *ngFor="let item of pobrane_dane">{{item.nazwa}}</li>
+</ol>
+<img src="ksiazki.jpg" alt="Kupię/ Sprzedam książkę">
+<table>
+    <thead>
+        <tr><th>Liczba ogłoszeń</th><th>Cena ogłoszenia</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>1 - 10</td><td>1 PLN</td></tr>
+        <tr><td>11 - 50</td><td>0.80 PLN</td></tr>
+        <tr><td>51 i więcej</td><td>0.60 PLN</td></tr>
+    </tbody>
+</table>
+
+<p>* BONUS - Subskrypcja newslettera to upust 0.20 PLN na ogłoszenie</p>

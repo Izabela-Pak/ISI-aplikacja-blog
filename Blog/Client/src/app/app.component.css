@@ -1,0 +1,27 @@
+header, footer{
+    background-color: #40271A;
+    color: white;
+}
+
+header{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height:80px;
+    text-align: center;
+}
+
+footer{
+    text-align: right;
+}
+
+main div:first-child,
+main div:last-child{
+    background-color: #DBB29C;
+    height: 700px;
+}
+
+main div:nth-child(2){
+    background-color: #ffe4d4;
+    height: 700px;
+    overflow: auto;
+}
+

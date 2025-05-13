@@ -1,0 +1,16 @@
+<form #form="ngForm" (ngSubmit)="InputAxios(form)">
+<label for="wybor-uzytkownika" class="form-label">Wybierz użytkownika</label>
+<select name="wybor-uzytkownika" id="wybor-uzytkownika"  [(ngModel)]="dane_do_wyslania.imie" class="form-control">
+<option [value]="item.imie" *ngFor="let item of select_uzytkownik">{{item.imie}}</option>
+</select>
+<label for="wybor-kategoria" class="form-label">Wybierz kategorie ogłoszenia</label>
+<select name="wybor-kategoria" id="wybor-kategoria" [(ngModel)]="dane_do_wyslania.kategoria" class="form-control">
+    <option [value]="item.nazwa" *ngFor="let item of select_kategoria">{{item.nazwa}}</option>
+</select>
+<label for="tytul" class="form-label">Tytuł ogłoszenia</label>
+<input type="text" name="tytul" id="tytul" [(ngModel)]="dane_do_wyslania.tytul" class="form-control">
+<label for="tresc" class="form-label">Treść ogłoszenia</label>
+<input type="text" name="tresc" id="tresc" [(ngModel)]="dane_do_wyslania.tresc" class="form-control">
+
+<button type="submit" class="btn btn-dark mt-2">Dodaj</button>
+</form>

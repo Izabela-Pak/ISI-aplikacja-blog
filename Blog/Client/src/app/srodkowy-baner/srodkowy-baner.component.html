@@ -1,0 +1,23 @@
+<h2>Ogłoszenia wybranej kategorii</h2>
+<div class="d-flex d-inline">
+<div class="form-check">
+<input type="checkbox" name="ksiazki" id="ksiazki" [(ngModel)]="checkboxy.ksiazki" class="form-check-input">
+<label for="ksiazki" class="form-check-label">Książki</label>
+</div>
+<div class="form-check">
+<input type="checkbox" name="muzyka" id="muzyka" [(ngModel)]="checkboxy.muzyka" class="form-check-input ms-2">
+<label for="muzyka" class="form-check-label">Muzyka</label>
+</div>
+<div class="form-check">
+<input type="checkbox" name="filmy" id="filmy" [(ngModel)]="checkboxy.filmy" class="form-check-input ms-2">
+<label for="filmy" class="form-check-label">Filmy</label>
+</div>
+</div>
+
+<div *ngFor="let item of pobrane_dane" class="dane">    
+    <div *ngIf="CoWyswietlic(item.kategoria)">
+    <h3>{{item.id}} {{item.tytul}}</h3>
+    <p>{{item.tresc}}</p>
+    <p>Telefon kontaktowy: {{item.telefon}}</p>
+    </div>
+</div>
