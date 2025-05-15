@@ -1,142 +1,69 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 23, 2025 at 11:36 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `ogloszenia`
+-- PostgreSQL database dump
 --
 
--- --------------------------------------------------------
+-- Dumped from database version 17.4
+-- Dumped by pg_dump version 17.4
+
+-- Started on 2025-05-15 10:17:01
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
 
 --
--- Table structure for table `kategorie`
+-- TOC entry 4900 (class 0 OID 57643)
+-- Dependencies: 217
+-- Data for Name: kategorie; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-CREATE TABLE `kategorie` (
-  `id` int(11) NOT NULL,
-  `nazwa` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+COPY public.kategorie (id, nazwa) FROM stdin;
+1	Książki
+2	Muzyka
+3	Filmy
+\.
+
 
 --
--- Dumping data for table `kategorie`
+-- TOC entry 4901 (class 0 OID 57648)
+-- Dependencies: 218
+-- Data for Name: ogloszenie; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO `kategorie` (`id`, `nazwa`) VALUES
-(1, 'Książki'),
-(2, 'Muzyka'),
-(3, 'Filmy');
+COPY public.ogloszenie (id, uzytkownik_id, kategoria, tytul, tresc) FROM stdin;
+1	1	1	Daniel Craig. Biografia	Biografia Daniela Craiga, niedrogo sprzedam
+2	2	1	Buick	Sprzedam horror Stephena Kinga w dobrym stanie
+3	1	2	Linkin Park	Sprzedam najnowszy album Linkin Park "From Zero"
+4	3	2	Melanie Martinez	Sprzedam album "Cry Baby" - wersja standardowa"
+5	2	3	Gwiezdne Wojny	Odstąpię pierwsze wydanie Wojen Gwiezdnych (VHS) 
+6	3	3	Władca Pierścieni	Wiecie może gdzie mogę obejrzeć wszystkie części Władcy Pierścieni
+\.
 
--- --------------------------------------------------------
-
---
--- Table structure for table `ogloszenie`
---
-
-CREATE TABLE `ogloszenie` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `uzytkownik_id` int(10) UNSIGNED NOT NULL,
-  `kategoria` int(10) UNSIGNED DEFAULT NULL,
-  `tytul` text DEFAULT NULL,
-  `tresc` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
--- Dumping data for table `ogloszenie`
+-- TOC entry 4902 (class 0 OID 57653)
+-- Dependencies: 219
+-- Data for Name: uzytkownik; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO `ogloszenie` (`id`, `uzytkownik_id`, `kategoria`, `tytul`, `tresc`) VALUES
-(1, 1, 1, 'Daniel Craig. Biografia', 'Biografia Daniela Craiga, niedrogo sprzedam'),
-(2, 1, 1, 'Selekcja', 'Sprzedam: \"Selekcja\" J. Kellermana, niezniszczona'),
-(3, 2, 1, 'Buick', 'Sprzedam horror Stephena Kinga w dobrym stanie'),
-(4, 2, 1, 'Tytus, Romek i Atomek', 'Ks. IV do sprzedania, stan dobry'),
-(5, 2, 2, 'Imagine Dragons', 'Sprzedam dwa CD Imagine Dragons'),
-(6, 2, 3, 'Kultowa Godzilla', 'Mam oryginalną kopię filmu Godzilla'),
-(7, 2, 3, 'Wojny Gwiezdne', 'Odstąpię pierwsze wydanie Wojen Gwiezdnych (VHS) - stan bardzo dobry'),
-(8, 2, 3, 'Wojny Gwiezdne', 'Odstąpię pierwsze wydanie Wojen Gwiezdnych (VHS) - stan bardzo dobry');
+COPY public.uzytkownik (id, imie, nazwisko, telefon, email) FROM stdin;
+1	Anna	Kowalska	601601601	anna@poczta.pl
+2	Jan	Nowak	608348192	jan@poczta.pl
+3	Krzysztof	Kowalewski	230185394	krzysztof@poczta.pl
+\.
 
--- --------------------------------------------------------
+
+-- Completed on 2025-05-15 10:17:01
 
 --
--- Table structure for table `uzytkownik`
+-- PostgreSQL database dump complete
 --
 
-CREATE TABLE `uzytkownik` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `imie` text DEFAULT NULL,
-  `nazwisko` text DEFAULT NULL,
-  `telefon` text DEFAULT NULL,
-  `email` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
-
---
--- Dumping data for table `uzytkownik`
---
-
-INSERT INTO `uzytkownik` (`id`, `imie`, `nazwisko`, `telefon`, `email`) VALUES
-(1, 'Anna', 'Kowalska', '601601601', 'anna@poczta.pl'),
-(2, 'Jan', 'Nowak', '608608608', 'jan@poczta.pl'),
-(3, 'Krzysztof', 'Kowalewski', '605606607', 'krzysztof@poczta.pl');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `kategorie`
---
-ALTER TABLE `kategorie`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ogloszenie`
---
-ALTER TABLE `ogloszenie`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `uzytkownik`
---
-ALTER TABLE `uzytkownik`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `kategorie`
---
-ALTER TABLE `kategorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `ogloszenie`
---
-ALTER TABLE `ogloszenie`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `uzytkownik`
---
-ALTER TABLE `uzytkownik`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
