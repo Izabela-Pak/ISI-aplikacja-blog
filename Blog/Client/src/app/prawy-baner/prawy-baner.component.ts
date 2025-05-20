@@ -22,7 +22,7 @@ export class PrawyBanerComponent {
 
   SelectAxios = async () => {
     let client = axios.create({
-      baseURL: "http://localhost:3002"
+      baseURL: "https://isi-aplikacja-blog-1.onrender.com"
     });
     try{
       const res1 = await client.get("/select?sql=SELECT imie, id FROM uzytkownik");
@@ -37,7 +37,7 @@ export class PrawyBanerComponent {
   InputAxios = async (form: NgForm) =>{
     //Czy wstawiamy czy pobieramy - tworzymy tak samo klienta
     let client = axios.create({
-      baseURL: "http://localhost:3002"
+      baseURL: "https://isi-aplikacja-blog-1.onrender.com"
     });
 
     try{
