@@ -13,7 +13,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "baseHref": "/"
             "outputPath": "dist/zad",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -72,6 +71,7 @@
             }
           },
           "defaultConfiguration": "development"
+
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
