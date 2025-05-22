@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import axios from "axios"
 
+
 @Component({
   selector: 'app-srodkowy-baner',
   imports: [CommonModule, FormsModule],
@@ -30,7 +31,7 @@ export class SrodkowyBanerComponent {
   DaneAxios = async () => {
     //Tworzenie klienta axios - zawsze musi być
     let client = axios.create({
-      baseURL: "https://isi-aplikacja-blog-1.onrender.com"
+      baseURL: "https://isi-aplikacja-blog.onrender.com"
     });
 
     try{

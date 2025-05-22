@@ -15,7 +15,7 @@ export class LewyBanerComponent {
   DaneAxios = async () => {
     //Tworzenie klienta axios - zawsze musi być
     let client = axios.create({
-      baseURL: "https://isi-aplikacja-blog-1.onrender.com"
+      baseURL: "https://isi-aplikacja-blog.onrender.com"
     });
 
     try{
