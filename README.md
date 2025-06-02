@@ -22,4 +22,4 @@ Postawienie-strony:
 
 Działająca aplikacja:
 
-![Dzialajaca-strona](./screenshots/Dzialajaca-strona.png.png)
+![Dzialajaca-strona](./screenshots/Dzialajaca-strona.png)
