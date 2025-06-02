@@ -5,21 +5,21 @@ https://isi-aplikacja-blog-1.onrender.com/
 # Zdjęcia do wybranych elementów:
 Stawianie bazy danych:
 
-![Nowa baza danych](./Dodanie-bazy-danych-do-Rendera.png)
+![Nowa baza danych](./screenshots/Dodanie-bazy-danych-do-Rendera.png)
 
 Sprawdzenie bazy danych:
 
-![Sprawdzenie-dodania-bazy](./Sprawdzenie-dodania-bazy.png)
+![Sprawdzenie-dodania-bazy](./screenshots/Sprawdzenie-dodania-bazy.png)
 
 Postawienie serwera:
 
-![Postawuienie serwera](./Postawienie-servera.png)
+![Postawuienie serwera](./screenshots/Postawienie-servera.png)
 
 
 Postawienie-strony:
 
-![Postawienie-strony](./Postawienie-strony.png)
+![Postawienie-strony](./screenshots/Postawienie-strony.png)
 
 Działająca aplikacja:
 
-![Dzialajaca-strona](./Dzialajaca-strona.png.png)
+![Dzialajaca-strona](./screenshots/Dzialajaca-strona.png.png)
