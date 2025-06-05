@@ -45,11 +45,15 @@ app.post('/insert', async (req, res) => {
       return res.status(400).json({ error: 'Nie znaleziono kategorii.' });
     }
     const kategoria_id = catResult.rows[0].id;
+    
 
     const id= await link.query('SELECT Max(iD) FROM ogloszenie')
+    const maxId = idResult.rows[0].max || 0;
+    const nextid= maxId+1
+ 
     await link.query(
       'INSERT INTO ogloszenie (uzytkownik_id, kategoria, tytul, tresc,id) VALUES ($1, $2, $3, $4, $5)',
-      [uzytkownik_id, kategoria_id, tytul, tresc, id+1]
+      [uzytkownik_id, kategoria_id, tytul, tresc, nextid]
     );
 
     res.json({ message: 'Dodano ogłoszenie.' });
