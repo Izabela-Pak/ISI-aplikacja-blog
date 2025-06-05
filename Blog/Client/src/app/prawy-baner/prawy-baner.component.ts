@@ -46,7 +46,6 @@ export class PrawyBanerComponent {
       const tytul = this.dane_do_wyslania.tytul.replace(/"/g, '\\"');
       const tresc = this.dane_do_wyslania.tresc.replace(/'/g, "''");
 
-      console.log(sql);
       const naglowek = new Headers();
       naglowek.append('Content-Type', 'application/json');
 
