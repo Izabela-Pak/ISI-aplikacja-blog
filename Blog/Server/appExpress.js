@@ -46,9 +46,10 @@ app.post('/insert', async (req, res) => {
     }
     const kategoria_id = catResult.rows[0].id;
 
+    const id= await link.query('SELECT Max(iD) FROM ogloszenie')
     await link.query(
-      'INSERT INTO ogloszenie (uzytkownik_id, kategoria, tytul, tresc) VALUES ($1, $2, $3, $4)',
-      [uzytkownik_id, kategoria_id, tytul, tresc]
+      'INSERT INTO ogloszenie (uzytkownik_id, kategoria, tytul, tresc,id) VALUES ($1, $2, $3, $4, $5)',
+      [uzytkownik_id, kategoria_id, tytul, tresc, id+1]
     );
 
     res.json({ message: 'Dodano ogłoszenie.' });
