@@ -29,7 +29,8 @@ app.post('/insert', async (req, res) => {
   try {
     // Parametryzowane zapytanie - BEZPIECZNE
     const userResult = await link.query(
-      `SELECT id FROM uzytkownik WHERE imie = '${imie}'`
+      'SELECT id FROM uzytkownik WHERE imie = $1',
+      [imie]
     );
     if (userResult.rows.length === 0) {
       return res.status(400).json({ error: 'Nie znaleziono użytkownika.' });
@@ -37,7 +38,8 @@ app.post('/insert', async (req, res) => {
     const uzytkownik_id = userResult.rows[0].id;
 
     const catResult = await link.query(
-      `SELECT id FROM kategorie WHERE nazwa = '${kategoria}'`
+      'SELECT id FROM kategorie WHERE nazwa = $1',
+      [kategoria]
     );
     if (catResult.rows.length === 0) {
       return res.status(400).json({ error: 'Nie znaleziono kategorii.' });
@@ -45,7 +47,8 @@ app.post('/insert', async (req, res) => {
     const kategoria_id = catResult.rows[0].id;
 
     await link.query(
-      `INSERT INTO ogloszenie (uzytkownik_id, kategoria, tytul, tresc) VALUES (${uzytkownik_id}, ${kategoria_id}, '${tytul}', '${tresc}')`
+      'INSERT INTO ogloszenie (uzytkownik_id, kategoria, tytul, tresc) VALUES ($1, $2, $3, $4)',
+      [uzytkownik_id, kategoria_id, tytul, tresc]
     );
 
     res.json({ message: 'Dodano ogłoszenie.' });
