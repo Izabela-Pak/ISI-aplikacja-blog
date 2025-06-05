@@ -18,18 +18,16 @@ app.use(cors());
 //Odebranie Get z parametrami (selectem)
 app.get('/select', (req, res) =>{
     const sql = req.query.sql;
-    link.query(sql, (error, result, fields) => {
-        if(error) return res.status(422);
-        res.json(result);
-    })
-})
+    link.query(sql)
+    .then(result => res.json(result.rows))
+    .catch(error => res.status(422).json({error: error.message}));
+});
 
 app.post('/insert', (req, res) =>{
     const sql = req.body.sql;
-    link.query(sql, (error, result, fields) => {
-        if(error) return res.status(422);
-        res.json({message: "Dane dodane"});
-    })
+    link.query(sql)
+    .then(result => res.json(result.rows))
+    .catch(error => res.status(422).json({error: error.message}));
 })
 
 //Server - nasłuchiwanie na porcie
