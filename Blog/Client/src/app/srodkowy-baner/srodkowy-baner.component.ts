@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import axios from "axios"
 
-
 @Component({
   selector: 'app-srodkowy-baner',
   imports: [CommonModule, FormsModule],

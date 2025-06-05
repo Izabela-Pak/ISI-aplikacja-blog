@@ -48,7 +48,7 @@ export class PrawyBanerComponent {
       const naglowek = new Headers();
       naglowek.append('Content-Type', 'application/json');
 
-      const response = await axios.post('https://isi-aplikacja-blog.onrender.com', 
+      const response = await axios.post('https://isi-aplikacja-blog.onrender.com/insert', 
        {sql: sql});
 
        //Jeśli się udało wstawić dane to czyści formularz
