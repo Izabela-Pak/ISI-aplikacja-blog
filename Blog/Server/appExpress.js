@@ -33,4 +33,4 @@ app.post('/insert', (req, res) =>{
 //Server - nasłuchiwanie na porcie
 app.listen(port, () => {
     console.log(`serwer słucha na porcie ${port}`);
-})
+});
