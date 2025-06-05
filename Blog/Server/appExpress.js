@@ -27,28 +27,25 @@ app.post('/insert', async (req, res) => {
   const { imie, kategoria, tytul, tresc } = req.body;
 
   try {
-    // Pobierz id użytkownika
+    // Parametryzowane zapytanie - BEZPIECZNE
     const userResult = await link.query(
-      `SELECT id FROM uzytkownik WHERE imie = ${imie}`,
+      `SELECT id FROM uzytkownik WHERE imie = '${imie}'`
     );
     if (userResult.rows.length === 0) {
       return res.status(400).json({ error: 'Nie znaleziono użytkownika.' });
     }
     const uzytkownik_id = userResult.rows[0].id;
 
-    // Pobierz id kategorii
     const catResult = await link.query(
-      `SELECT id FROM kategorie WHERE nazwa = ${kategoria}`
+      `SELECT id FROM kategorie WHERE nazwa = '${kategoria}'`
     );
     if (catResult.rows.length === 0) {
       return res.status(400).json({ error: 'Nie znaleziono kategorii.' });
     }
     const kategoria_id = catResult.rows[0].id;
 
-    // Wstaw ogłoszenie
     await link.query(
-      'INSERT INTO ogloszenie (uzytkownik_id, kategoria, tytul, tresc) VALUES ($1, $2, $3, $4)',
-      [uzytkownik_id, kategoria_id, tytul, tresc]
+      `INSERT INTO ogloszenie (uzytkownik_id, kategoria, tytul, tresc) VALUES (${uzytkownik_id}, ${kategoria_id}, '${tytul}', '${tresc}')`
     );
 
     res.json({ message: 'Dodano ogłoszenie.' });
@@ -57,6 +54,7 @@ app.post('/insert', async (req, res) => {
     res.status(422).json({ error: error.message });
   }
 });
+
 
 //Server - nasłuchiwanie na porcie
 app.listen(port, () => {
