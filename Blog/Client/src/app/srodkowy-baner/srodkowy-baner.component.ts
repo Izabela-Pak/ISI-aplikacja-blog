@@ -34,7 +34,7 @@ export class SrodkowyBanerComponent {
     });
 
     try{
-      const response = await client.get("/select?sql=SELECT ogloszenie.id, kategoria, tytul, tresc, telefon, nazwa FROM `ogloszenie` JOIN uzytkownik ON uzytkownik.id=ogloszenie.uzytkownik_id JOIN kategorie ON kategorie.id = ogloszenie.kategoria;");
+      const response = await client.get("/select?sql=SELECT ogloszenie.id, kategoria, tytul, tresc, telefon, nazwa FROM ogloszenie JOIN uzytkownik ON uzytkownik.id=ogloszenie.uzytkownik_id JOIN kategorie ON kategorie.id = ogloszenie.kategoria;");
       this.pobrane_dane = response.data
     }catch(error){
       console.log(error);
