@@ -46,6 +46,7 @@ app.post('/insert', async (req, res) => {
     }
     const kategoria_id = catResult.rows[0].id;
 
+    await link.query('ALTER TABLE ogloszenie ALTER COLUMN id SET DEFAULT nextval(10);')
     await link.query(
       'INSERT INTO ogloszenie (uzytkownik_id, kategoria, tytul, tresc) VALUES ($1, $2, $3, $4)',
       [uzytkownik_id, kategoria_id, tytul, tresc]
