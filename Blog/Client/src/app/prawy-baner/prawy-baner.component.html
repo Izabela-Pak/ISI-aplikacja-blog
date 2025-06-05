@@ -1,4 +1,4 @@
-<form #form="ngForm" (ngSubmit)="InputAxios(form)">
+<form #form="ngForm" >
 <label for="wybor-uzytkownika" class="form-label">Wybierz użytkownika</label>
 <select name="wybor-uzytkownika" id="wybor-uzytkownika"  [(ngModel)]="dane_do_wyslania.imie" class="form-control">
 <option [value]="item.imie" *ngFor="let item of select_uzytkownik">{{item.imie}}</option>
@@ -12,5 +12,5 @@
 <label for="tresc" class="form-label">Treść ogłoszenia</label>
 <input type="text" name="tresc" id="tresc" [(ngModel)]="dane_do_wyslania.tresc" class="form-control">
 
-<button type="submit" class="btn btn-dark mt-2">Dodaj</button>
+<button (click)="InputAxios(form)" class="btn btn-dark mt-2">Dodaj</button>
 </form>
