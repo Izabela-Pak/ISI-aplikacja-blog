@@ -29,8 +29,7 @@ app.post('/insert', async (req, res) => {
   try {
     // Pobierz id użytkownika
     const userResult = await link.query(
-      'SELECT id FROM uzytkownik WHERE imie = $1',
-      [imie]
+      `SELECT id FROM uzytkownik WHERE imie = ${imie}`,
     );
     if (userResult.rows.length === 0) {
       return res.status(400).json({ error: 'Nie znaleziono użytkownika.' });
