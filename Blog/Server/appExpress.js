@@ -38,8 +38,7 @@ app.post('/insert', async (req, res) => {
 
     // Pobierz id kategorii
     const catResult = await link.query(
-      'SELECT id FROM kategorie WHERE nazwa = $1',
-      [kategoria]
+      `SELECT id FROM kategorie WHERE nazwa = ${kategoria}`
     );
     if (catResult.rows.length === 0) {
       return res.status(400).json({ error: 'Nie znaleziono kategorii.' });
