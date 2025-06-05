@@ -41,9 +41,20 @@ export class PrawyBanerComponent {
     });
 
     try{
-      const sql=`INSERT INTO ogloszenie(uzytkownik_id,kategoria,tytul,tresc) VALUES((SELECT id FROM uzytkownik WHERE imie='${this.dane_do_wyslania.imie}'), 
-      (SELECT id FROM kategorie WHERE nazwa='${this.dane_do_wyslania.kategoria}'), "${this.dane_do_wyslania.tytul}" , 
-      '${this.dane_do_wyslania.tresc}"');`
+      const imie = this.dane_do_wyslania.imie;
+      const kategoria = this.dane_do_wyslania.kategoria;
+      const tytul = this.dane_do_wyslania.tytul.replace(/"/g, '\\"');
+      const tresc = this.dane_do_wyslania.tresc.replace(/'/g, "''");
+
+      const sql = `
+        INSERT INTO ogloszenie(uzytkownik_id, kategoria, tytul, tresc)
+        VALUES(
+          (SELECT id FROM uzytkownik WHERE imie='${imie}'),
+          (SELECT id FROM kategorie WHERE nazwa='${kategoria}'),
+          "${tytul}",
+          '${tresc}'
+        );
+      `;
       console.log(sql);
       const naglowek = new Headers();
       naglowek.append('Content-Type', 'application/json');
