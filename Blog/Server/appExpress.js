@@ -23,12 +23,42 @@ app.get('/select', (req, res) =>{
     .catch(error => res.status(422).json({error: error.message}));
 });
 
-app.post('/insert', (req, res) =>{
-    const sql = req.body.sql;
-    link.query(sql)
-    .then(result => res.json(result.rows))
-    .catch(error => res.status(422).json({error: error.message}));
-})
+app.post('/insert', async (req, res) => {
+  const { imie, kategoria, tytul, tresc } = req.body;
+
+  try {
+    // Pobierz id użytkownika
+    const userResult = await link.query(
+      'SELECT id FROM uzytkownik WHERE imie = $1',
+      [imie]
+    );
+    if (userResult.rows.length === 0) {
+      return res.status(400).json({ error: 'Nie znaleziono użytkownika.' });
+    }
+    const uzytkownik_id = userResult.rows[0].id;
+
+    // Pobierz id kategorii
+    const catResult = await link.query(
+      'SELECT id FROM kategorie WHERE nazwa = $1',
+      [kategoria]
+    );
+    if (catResult.rows.length === 0) {
+      return res.status(400).json({ error: 'Nie znaleziono kategorii.' });
+    }
+    const kategoria_id = catResult.rows[0].id;
+
+    // Wstaw ogłoszenie
+    await link.query(
+      'INSERT INTO ogloszenie (uzytkownik_id, kategoria, tytul, tresc) VALUES ($1, $2, $3, $4)',
+      [uzytkownik_id, kategoria_id, tytul, tresc]
+    );
+
+    res.json({ message: 'Dodano ogłoszenie.' });
+  } catch (error) {
+    console.error('Błąd INSERT:', error);
+    res.status(422).json({ error: error.message });
+  }
+});
 
 //Server - nasłuchiwanie na porcie
 app.listen(port, () => {

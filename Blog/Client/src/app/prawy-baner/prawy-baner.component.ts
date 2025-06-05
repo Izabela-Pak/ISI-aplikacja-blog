@@ -46,22 +46,16 @@ export class PrawyBanerComponent {
       const tytul = this.dane_do_wyslania.tytul.replace(/"/g, '\\"');
       const tresc = this.dane_do_wyslania.tresc.replace(/'/g, "''");
 
-      const sql = `
-        INSERT INTO ogloszenie(uzytkownik_id, kategoria, tytul, tresc)
-        VALUES(
-          (SELECT id FROM uzytkownik WHERE imie='${imie}'),
-          (SELECT id FROM kategorie WHERE nazwa='${kategoria}'),
-          "${tytul}",
-          '${tresc}'
-        );
-      `;
       console.log(sql);
       const naglowek = new Headers();
       naglowek.append('Content-Type', 'application/json');
 
-      const response = await axios.post('https://isi-aplikacja-blog.onrender.com/insert', 
-       {sql: sql});
-
+      const response = await axios.post('https://isi-aplikacja-blog.onrender.com/insert', {
+      imie: this.dane_do_wyslania.imie,
+      kategoria: this.dane_do_wyslania.kategoria,
+      tytul: this.dane_do_wyslania.tytul,
+      tresc: this.dane_do_wyslania.tresc
+      });
        //Jeśli się udało wstawić dane to czyści formularz
        if (response.status === 200) {
         form.reset();
