@@ -48,7 +48,7 @@ app.post('/insert', async (req, res) => {
     
 
     const id= await link.query('SELECT Max(iD) FROM ogloszenie')
-    const maxId = idResult.rows[0].max || 0;
+    const maxId = id.rows[0].max || 0;
     const nextid= maxId+1
  
     await link.query(
